@@ -11,7 +11,7 @@ import com.google.firebase.firestore.firestore
 
 class Viewdata : AppCompatActivity() {
     private lateinit var binding: ActivityViewdataBinding
-    private lateinit var adapter : DataAdapter
+    private lateinit var adapter : DataAdapter<Any?>
     var dataSend = ArrayList<UserDataSend>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

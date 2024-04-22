@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.cloudfirestore.databinding.AdapterViewBinding
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 
-class DataAdapter : RecyclerView.Adapter<DataAdapter.MyViewHolder>() {
+class DataAdapter<StorageReference> : RecyclerView.Adapter<DataAdapter.MyViewHolder>() {
 
     private var dataList = emptyList<UserDataSend>()
     private var selectedPosition = RecyclerView.NO_POSITION
@@ -80,6 +82,7 @@ class DataAdapter : RecyclerView.Adapter<DataAdapter.MyViewHolder>() {
 
             holder.binding.deleteBTN.setOnClickListener {
                 val deleteUser = db.collection("cities").document(id)
+
                     deleteUser.delete()
                     .addOnSuccessListener {
                         Toast.makeText(holder.itemView.context,"Data Deleted Successfully",Toast.LENGTH_SHORT).show()
